@@ -1,0 +1,108 @@
+<div class="modal fade" id="addFaclities" [ngStyle]="{'display':display}" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Events</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row col-md-12">
+          <form #addFaclities=ngForm (ngSubmit)="onSubmit(addFaclities)" [formGroup]="faclitiesForm">
+            <div class="row">
+              <div class="row col-12">
+                <div class="form-group item col-md-4">
+                  <label>Event Name</label><span class="requerd">*</span>
+                  <input type="text" class="form-control" formControlName='facilityName' #facilityName>
+                  <div
+                    *ngIf="faclitiesForm.controls['facilityName'].invalid && (faclitiesForm.controls['facilityName'].touched)">
+                    <div *ngIf="faclitiesForm.controls['facilityName'].errors.required">
+                      <p class="error-msg">Event Name is required.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group item col-md-3">
+                  <label>City</label><span class="requerd">*</span>
+                  <select class="form-control" formControlName="city" #city>
+                    <option *ngFor="let type of City" [ngValue]="type.value">
+                      {{type.name}}
+                    </option>
+                  </select>
+                  <div *ngIf="faclitiesForm.controls['city'].invalid && (faclitiesForm.controls['city'].touched)">
+                    <div *ngIf="faclitiesForm.controls['city'].errors.required">
+                      <p class="error-msg">City is required.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row col-12">
+                <div class="form-group item col-md-4">
+                  <label>Main Image</label><span class="requerd">*</span>
+                  <input type="file" (change)="onFileSelect($event.target.files)" formControlName='image' #image>
+                  <div *ngIf="faclitiesForm.controls['image'].invalid && (faclitiesForm.controls['image'].touched)">
+                    <div *ngIf="faclitiesForm.controls['image'].errors.required">
+                      <p class="error-msg">Image is required.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group item col-md-3">
+                  <label>Address</label>
+                  <input type="text" class="form-control" formControlName='address' #address>
+                </div>
+              </div>
+              <div class="row col-12">
+                <div class="form-group item col-md-2">
+                  <label>Price</label><span class="requerd">*</span>
+                  <input type="text" class="form-control" formControlName='priceForPerson' #priceForPerson>
+                  <div
+                    *ngIf="faclitiesForm.controls['priceForPerson'].invalid && (faclitiesForm.controls['priceForPerson'].touched)">
+                    <div *ngIf="faclitiesForm.controls['priceForPerson'].errors.required">
+                      <p class="error-msg">Price is required.</p>
+                    </div>
+                    <div *ngIf="faclitiesForm.controls['priceForPerson'].errors.pattern">
+                      <p class="error-msg">Price only Number and max 3 digit</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group item col-md-3">
+                  <label>Is Offer</label>
+                  <input style="margin-left:-52px;" type="checkbox" class="form-control check" formControlName='isOffer'
+                    [(ngModel)]="offer" #isOffer>
+                </div>
+                <div class="form-group item col-md-4">
+                  <label>Start Data</label><span class="requerd">*</span>
+                  <input type="date" class="form-control" formControlName='startDataOffer' #startDataOffer>
+                  <div
+                    *ngIf="faclitiesForm.controls['startDataOffer'].invalid && (faclitiesForm.controls['startDataOffer'].touched)">
+                    <div *ngIf="faclitiesForm.controls['startDataOffer'].errors.required">
+                      <p class="error-msg">Start Data is required.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group item col-md-4" *ngIf="offer">
+                  <label>End Date Offer</label>
+                  <input type="date" class="form-control" formControlName='endDateOffer' #endDateOffer>
+                </div>
+              </div>
+              <div class="row col-12">
+                <div class="form-group item col-md-12">
+                  <label>The Details</label>
+                  <textarea class="form-control" rows="5" formControlName='details' #details></textarea>
+                </div>
+              </div>
+              <div class="row col-md-12">
+                  <p class="error-msg" *ngIf="!dateValidation">End date before start date</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="onClose()" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

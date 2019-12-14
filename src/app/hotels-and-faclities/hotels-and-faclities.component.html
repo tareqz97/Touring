@@ -1,0 +1,239 @@
+<!-- <div class="row" style="margin:30px;" *ngIf="viewHotels">
+  <div class="col-md-6" *ngFor="let item of hotelData,index as i" style="padding:0px;margin-bottom: 40px;">
+    <div class="row">
+    <div class="">
+        <img src="http://localhost:51621/Images/{{item.MainImage}}" alt="" width="350px" height="200px" style="border-radius: 4px;" [ngStyle]="{'margin-left': i %2 !== 0 ? '30px' : ''}">
+    </div>
+    <div class="" style="padding-left: 15px;
+        border: 1px solid rgba(0,0,0,.125);border-radius: .25rem;
+    width: 379px;">
+    <div class="float-right" style="font-size: 20px;">
+        <div (click)="orderData(item)" *ngIf="item.selected !== true" href="" data-toggle="modal" data-target="#addOrder"><i class="fas fa-plus-square float-right"></i></div>
+        <div *ngIf="item.selected"><i class="far fa-check-square float-right"></i></div>
+        <br>
+        <div *ngIf="item.IsOffer === 'true'" style="background-color: #FF0040;border-radius: 9px;font-size: 20px;font-weight: normal;font-family: cursive;">Offer</div>
+    </div>
+    <div class="title">{{item.HotelName}} Hotel</div>
+    <div>
+    <ng-container [ngSwitch]="item.Evaluation">
+        <ng-container *ngSwitchCase="4">
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+        </ng-container>
+        <ng-container *ngSwitchCase="5">
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+        </ng-container>
+        <ng-container *ngSwitchCase="6">
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+        </ng-container>
+        <ng-container *ngSwitchCase="7">
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+        </ng-container>
+    </ng-container>
+    </div>
+    <div>
+        <i class="fas fa-user-friends"></i> {{item.NumOfPerson}} 
+    </div>
+    <div>
+        <i class="fas fa-map-marker-alt"></i> {{item.City}}
+    </div>
+    <div>
+      Price for day : {{item.PriceForDay}} JOD
+    </div>
+    <div *ngIf="item.IsOffer === 'true'">
+      From {{item.DateOfOffers}} to {{item.EndDateOfOffers}}
+    </div>
+  </div>
+  </div>
+  </div>
+</div> -->
+
+<!-- //////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<div class="row" style="margin:30px;" *ngIf="viewHotels">
+    <div class="col-md-6" *ngFor="let item of hotelData,index as i" style="padding:0px;margin-bottom: 40px;">
+    <section class="section mt-5">  
+    <div class="card">
+      <div class="row">
+        <div class="col-md-6">
+          <div>
+            <img alt="Web Studio" class="img-fluid" src="http://localhost:51621/Images/{{item.MainImage}}" style="padding: 10px;border-radius: 40px;"/>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-5 card-info" style="font-size: 14px;">
+            <div class="float-right icon" style="font-size: 22px;">
+                <div (click)="orderData(item)" style="cursor: pointer;" *ngIf="item.selected !== true" href="" data-toggle="modal" data-target="#addOrder"><i class="fas fa-plus-square float-right"></i></div>
+                <div *ngIf="item.selected"><i class="far fa-check-square float-right"></i></div>
+                <br>
+                <div *ngIf="item.IsOffer === 'true'" class="offer">Offer</div>
+            </div>
+            <div style="margin-top: 5px;">
+            <div class="title">{{item.HotelName}} Hotel</div>
+            <hr style="margin-top: 4px;margin-bottom: 7px;">
+            <div>
+                <ng-container [ngSwitch]="item.Evaluation">
+                    <ng-container *ngSwitchCase="4">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="5">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="6">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="7">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                    </ng-container>
+                </ng-container>
+            </div>
+            <div>
+                <i class="fas fa-user-friends"></i> {{item.NumOfPerson}} 
+            </div>
+            <div>
+                <i class="fas fa-map-marker-alt"></i> {{item.City}}
+            </div>
+            <div>
+              Price for day : {{item.PriceForDay}} JOD
+            </div>
+            <div *ngIf="item.IsOffer === 'true'">
+              From {{item.DateOfOffers}} to {{item.EndDateOfOffers}}
+            </div>
+            <div style="max-width: 348px;word-wrap:break-word;">
+                {{item.Map | slice:0:80}} <a class="details" (click)="viewDetails('Hotel Details',item.Map)" data-toggle="modal" data-target="#detailsModel" *ngIf="item.Map.length > 80"> ... read more</a> 
+              </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </div>
+  </div>
+
+<!-- //////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+
+<!-- <div class="row" style="margin:30px;" *ngIf="viewRestaurants">
+    <div class="col-md-6 col-sm-12" *ngFor="let item of eventDataView,index as i" style="padding:0px;margin-bottom: 40px;">
+      <div class="row">
+      <div class="">
+          <img src="http://localhost:51621/Images/{{item.MainImage}}" alt="" width="350px" height="200px" style="border-radius: 4px;" [ngStyle]="{'margin-left': i %2 !== 0 ? '30px' : ''}">
+      </div>
+      <div class="" style="padding-left: 15px;border: 1px solid rgba(0,0,0,.125);border-radius: .25rem;width: 379px;overflow-y:auto;max-height: 200px;">
+      <div class="float-right" style="font-size: 20px;">
+          <div (click)="addEvent(item)" *ngIf="item.selected !== true"><i class="fas fa-plus-square float-right"></i></div>
+          <div *ngIf="item.selected"><i class="far fa-check-square float-right"></i></div>
+          <br>
+          <div *ngIf="item.IsOffer === 'true'" style="background-color: #FF0040;border-radius: 9px;font-size: 20px;font-weight: normal;font-family: cursive;">Offer</div>
+      </div>
+      <div class="title">{{item.FacilityName}}</div>
+      <div>
+          <i class="fas fa-map-marker-alt"></i> {{item.City}}
+      </div>
+      <div>
+        Price For Person : {{item.PriceForPerson}} JOD
+      </div>
+      <div>
+        Date : {{item.DateOfOffers}}
+      </div>
+      <div style="max-width: 348px;word-wrap: break-word;">
+        Details : {{item.Details}} 
+      </div>
+    </div>
+    </div>
+    </div>
+  </div> -->
+
+  <!-- //////////////////////////////////////////////////// -->
+  <div class="row" style="margin:30px;" *ngIf="viewRestaurants">
+      <div class="col-md-6" *ngFor="let item of eventDataView,index as i" style="padding:0px;margin-bottom: 40px;">
+      <section class="section mt-5">  
+      <div class="card">
+        <div class="row">
+          <div class="col-md-6">
+            <div>
+              <img alt="Web Studio" class="img-fluid" src="http://localhost:51621/Images/{{item.MainImage}}" style="padding: 10px;border-radius: 40px;"/>
+            </div>
+          </div>
+          <!-- overflow-y: auto;max-height: 190px; -->
+          <div class="col-md-6 col-lg-6 card-info" style="font-size: 14px;">
+              <div class="float-right icon-event" style="font-size: 22px;">
+                  <div (click)="addEvent(item)" style="cursor: pointer;" *ngIf="item.selected !== true"><i class="fas fa-plus-square float-right"></i></div>
+                  <div *ngIf="item.selected"><i class="far fa-check-square float-right"></i></div>
+                  <br>
+                  <div *ngIf="item.IsOffer === 'true'" class="offer">Offer</div>
+              </div>
+              <div style="margin-top: 5px;">
+              <div class="title">{{item.FacilityName}}</div>
+              <hr style="margin-top: 4px;margin-bottom: 7px;">
+              <div>
+                <i class="fas fa-map-marker-alt"></i> {{item.City}}
+              </div>
+              <div>
+                Price For Person : {{item.PriceForPerson}} JOD
+              </div>
+              <div *ngIf="item.IsOffer !== 'true'">
+                Date : {{item.DateOfOffers}}
+              </div>
+              <div *ngIf="item.IsOffer === 'true'">
+                From {{item.DateOfOffers}} to {{item.EndDateOfOffers}}
+              </div>
+              <div style="max-width: 348px;word-wrap:break-word;">
+                {{item.Details | slice:0:150}} <a class="details" (click)="viewDetails('Event Details',item.Details)" data-toggle="modal" data-target="#detailsModel" *ngIf="item.Details.length > 150"> ... read more</a> 
+              </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    </div>
+    </div>
+  <!-- ////////////////////////////////////////////////////////// -->
+<app-add-order [orderData]="order"></app-add-order>
+<app-veiw-details [title]="title" [details]="details"></app-veiw-details>
+

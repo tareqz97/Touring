@@ -1,0 +1,51 @@
+<app-navbar></app-navbar>
+<div class="row">
+    <h3 class="title-fonts">Hotels</h3>       
+    <table class="table table-striped table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>Hotel Name</th>
+          <th>Number Of Person</th>
+          <th>Is Offer</th>
+          <th>Start Day</th>
+          <th>End Day</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of orderData">
+          <td>{{item.HotelName}}</td>
+          <td>{{item.NumOfPerson}}</td>
+          <td>{{item.IsOffer}}</td>
+          <td>{{item.StartDate}}</td>
+          <td>{{item.EndDate}}</td>
+          <td><i class="fas fa-trash-alt" data-toggle="modal" href="" (click)="deleteHotelOrders(item.OrderId)" data-target="#deleteUserModal"></i></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="row">      
+      <h3 class="title-fonts">Events</h3> 
+      <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th>Event Name</th>
+            <th>Start Day</th>
+            <th>Is Offer</th>
+            <th>End Day</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of eventdata">
+            <td>{{item.EventName}}</td>
+            <td>{{item.StartDate}}</td>
+            <td>{{item.IsOffer}}</td>
+            <td>{{item.EndDate}}</td>
+            <td><i class="fas fa-trash-alt" data-toggle="modal" href="" (click)="deleteEventOrder(item.Id)" data-target="#deleteUserModal"></i></td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    <app-delete-modal [userId]="id" [from]="from"></app-delete-modal>

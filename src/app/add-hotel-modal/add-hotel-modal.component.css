@@ -1,0 +1,22 @@
+.modal-body .row{
+    max-width: 100%;
+}
+.item{
+    margin-left: 25px;
+}
+.error-msg{
+    color: red;
+    font-size :13px;
+}
+.requerd{
+    color: red;
+    font-size: 17px;
+    font-weight: bold;
+}
+.check:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color:fff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+}

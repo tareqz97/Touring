@@ -1,0 +1,55 @@
+<div>
+    <!-- <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addUser">Add User</button>        -->
+  </div>
+  <div class="modal fade" id="addOrder" [ngStyle]="{'display':display}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Order</h5>
+          <button type="button" class="close" data-dismiss="modal" (click)="onClose()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- *ngIf="item.title != 'Id'" -->
+          <div class="row col-md-12">
+            <form [formGroup]="orderForm">
+              <div class="row">
+                <div class="form-group item col-md-5">
+                  <label>Start Day</label><span class="requerd">*</span>
+                  <input type="date" class="form-control" formControlName='startDay'>
+                  <div *ngIf="orderForm.controls['startDay'].invalid && (orderForm.controls['startDay'].dirty || orderForm.controls['startDay'].touched)">
+                    <div *ngIf="orderForm.controls['startDay'].errors.required">
+                      <p class="error-msg">Start Date is required.</p>
+                    </div>
+                    <!-- <div *ngIf="orderForm.controls['startDay'].errors.pattern">
+                      <p class="error-msg">First Name only characters</p>
+                    </div> -->
+                  </div>
+                </div>
+                <div class="form-group item col-md-5">
+                  <label>End Day</label><span class="requerd">*</span>
+                  <input type="date" class="form-control" formControlName='endDay'>
+                  <div *ngIf="orderForm.controls['endDay'].invalid && (orderForm.controls['endDay'].dirty || orderForm.controls['endDay'].touched)">
+                      <div *ngIf="orderForm.controls['endDay'].errors.required">
+                        <p class="error-msg">End Date is required.</p>
+                      </div>
+                      <!-- <div *ngIf="orderForm.controls['endDay'].errors.pattern">
+                        <p class="error-msg">Last Name only characters</p>
+                      </div> -->
+                    </div>
+                </div>
+                <div>
+                  <p class="error-msg" *ngIf="!dateValidation">End date before start date</p>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="onClose()" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success" (click)="addOrder()">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>

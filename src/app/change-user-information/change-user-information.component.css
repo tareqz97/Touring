@@ -1,0 +1,15 @@
+.modal-body .row{
+    max-width: 100%;
+}
+.item{
+    margin-left: 25px;
+}
+.error-msg{
+    color: red;
+    font-size :13px;
+}
+.requerd{
+    color: red;
+    font-size: 17px;
+    font-weight: bold;
+}

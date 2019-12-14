@@ -1,0 +1,110 @@
+
+<div class="modal fade" id="addTouristArea" [ngStyle]="{'display':display}" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Tourist Area</h5>
+        <button type="button" class="close" data-dismiss="modal" (click)="onClose()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row col-md-12">
+            <form #addForm=ngForm 
+            (ngSubmit)="onSubmit(addForm)" 
+            [formGroup]="tourisAreaForm">
+            <div class="row">
+            <div class="row col-12">
+              <div class="form-group item col-md-6">
+                <label>Area Name</label><span class="requerd">*</span>
+                <input type="text" class="form-control" formControlName='areaName' #areaName>
+                <div
+                  *ngIf="tourisAreaForm.controls['areaName'].invalid && (tourisAreaForm.controls['areaName'].dirty || tourisAreaForm.controls['areaName'].touched)">
+                  <div *ngIf="tourisAreaForm.controls['areaName'].errors.required">
+                    <p class="error-msg">Area Name is required.</p>
+                  </div>
+                  <div *ngIf="tourisAreaForm.controls['areaName'].errors.pattern">
+                    <p class="error-msg">Area Name only characters</p>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group item col-md-4">
+                <label>City</label><span class="requerd">*</span>
+                <select class="form-control" formControlName="city" #city>
+                  <option *ngFor="let city of City" [ngValue]="city.value">{{city.name}}
+                  </option>
+                </select>
+                <div
+                  *ngIf="tourisAreaForm.controls['city'].invalid && (tourisAreaForm.controls['city'].dirty || tourisAreaForm.controls['city'].touched)">
+                  <div *ngIf="tourisAreaForm.controls['city'].errors.required">
+                    <p class="error-msg">City is required.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row col-12">
+                <div class="form-group item col-md-4">
+                    <label>Image</label><span class="requerd">*</span>
+                    <input type="file" (change)="onFileSelect($event.target.files)" formControlName='image' #image>
+                    <div
+                      *ngIf="tourisAreaForm.controls['image'].invalid && (tourisAreaForm.controls['image'].dirty || tourisAreaForm.controls['image'].touched)">
+                      <div *ngIf="tourisAreaForm.controls['image'].errors.required">
+                        <p class="error-msg">Image is required.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group item col-md-4">
+                      <label>Type Of Tourism</label><span class="requerd">*</span>
+                      <select class="form-control" formControlName="typeofTourism" #typeofTourism>
+                        <option *ngFor="let type of TypeofTourism" [ngValue]="type.value">
+                          {{type.name}}
+                        </option>
+                      </select>
+                      <div
+                        *ngIf="tourisAreaForm.controls['typeofTourism'].invalid && (tourisAreaForm.controls['typeofTourism'].dirty || tourisAreaForm.controls['typeofTourism'].touched)">
+                        <div *ngIf="tourisAreaForm.controls['typeofTourism'].errors.required">
+                          <p class="error-msg">Type of tourism is required.</p>
+                        </div>
+                      </div>
+                    </div>
+            </div>
+            <div class="row col-12">
+              <div class="form-group item col-md-5">
+                <label>Distance from the city center</label><span class="requerd">*</span>
+                <input type="text" class="form-control" formControlName='distanceAmman' #distanceAmman>
+                <div
+                  *ngIf="tourisAreaForm.controls['distanceAmman'].invalid && (tourisAreaForm.controls['distanceAmman'].dirty || tourisAreaForm.controls['distanceAmman'].touched)">
+                  <div *ngIf="tourisAreaForm.controls['distanceAmman'].errors.required">
+                    <p class="error-msg">Distance from the Amman is required.</p>
+                  </div>
+                  <div *ngIf="tourisAreaForm.controls['distanceAmman'].errors.pattern">
+                      <p class="error-msg">Distance Amman only Number and max 3 digit.</p>
+                    </div>
+                </div>
+              </div>
+              <div class="form-group item col-md-4">
+                  <label>Distance from the Airport</label><span class="requerd">*</span>
+                  <input type="text" class="form-control" formControlName='distanceAirport' #distanceAirport>
+                  <div
+                    *ngIf="tourisAreaForm.controls['distanceAirport'].invalid && (tourisAreaForm.controls['distanceAirport'].dirty || tourisAreaForm.controls['distanceAirport'].touched)">
+                    <div *ngIf="tourisAreaForm.controls['distanceAirport'].errors.required">
+                      <p class="error-msg">Distance from the Airport is required.</p>
+                    </div>
+                    <div *ngIf="tourisAreaForm.controls['distanceAirport'].errors.pattern">
+                        <p class="error-msg">Distance Airport only number and max 3 digit.</p>
+                      </div>
+                  </div>
+                </div>
+            </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="onClose()" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

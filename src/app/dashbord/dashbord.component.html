@@ -1,0 +1,11 @@
+
+<app-navbar></app-navbar>
+<div class="row">
+  <div class="col-sm-6 col-md-6 col-lg-3 item-card" *ngFor="let card of cards">
+    <div class="dashbord-card-item">
+      <div class="item-card-img">
+        <img src="{{card.imagePath}}" style="max-height: 70px;width: 100px;padding-left: 10px;margin-bottom: 5px;">
+         <span style="padding-left: 12px;font-weight: 700;font-family: cursive;"> {{card.description}} </span>
+      </div>
+    </div>
+  </div>

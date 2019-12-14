@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+<div class="row" style="overflow-x:auto;">       
+    <table class="table table-striped table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>Facility Name</th>
+          <th>City</th>
+          <th>Address</th>
+          <th>Price For Person</th>
+          <th>Is Offer</th>
+          <th>Start Date Of Offers</th>
+          <th>End Date Of Offers</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of facilitiesData">
+          <td>{{item.FacilityName}}</td>
+          <td>{{item.City}}</td>
+          <td>{{item.Address}}</td>
+          <td>{{item.PriceForPerson}}</td>
+          <td>{{item.IsOffer}}</td>
+          <td>{{item.DateOfOffers}}</td>
+          <td>{{item.EndDateOfOffers}}</td>
+          <td><i class="fas fa-trash-alt" data-toggle="modal" href="" (click)="deleteFacilities(item.Id)" data-target="#deleteUserModal"></i></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <app-delete-modal [userId]="facilitiesId" [from]="from"></app-delete-modal>
+    <!-- <app-add-hotel-modal [type]="'edit'" [data]="hotelDataForEdit"></app-add-hotel-modal> -->

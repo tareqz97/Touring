@@ -1,0 +1,65 @@
+<nav class= "navbar navbar-expand-lg navbar-dark bg-dark ">
+  <a class="navbar-brand"><span style="color: #FF0040">MAS </span>JORDAN</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto" *ngIf="isLogin">
+      <li class="nav-item" *ngFor="let pag of pages" (click)="getRoute()">
+        <a class="nav-link" routerLink="/{{pag.routerLink}}" routerLinkActive="li-active-style">{{pag.name}}</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav mr-auto" *ngIf="!isLogin">
+      <li class="nav-item" *ngFor="let pag of titlse">
+        <a class="nav-link" href="{{pag.href}}">{{pag.name}}</a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav" *ngIf="!isLogin">
+        <li class="nav-item">
+            <a class="nav-link" href="" data-toggle="modal" data-target="#addUser">Sign up</a>
+            <!-- <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addUser">Add User</button> -->
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="" data-toggle="modal" data-target="#loginModal">Sign in</a>
+        </li>
+    </ul>
+    <ul class="nav navbar-nav" *ngIf="isLogin">
+        <li class="nav-item" *ngIf="userType == 'admin'">
+            <div class="dropdown">
+                <a class="dropdown-toggle" href="" style="text-decoration: none;" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="far fa-plus-square"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" style="background-color: #343a40" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="" data-toggle="modal" data-target="#addUser">Add User</a>
+                  <a class="dropdown-item" href="" data-toggle="modal" data-target="#addTouristArea">Add Tourist Area</a>
+                  <a class="dropdown-item" href="" data-toggle="modal" data-target="#addHotel">Add Tourist Hotel</a>
+                  <a class="dropdown-item" href="" data-toggle="modal" data-target="#addFaclities">Add Events</a>
+                </div>
+              </div>
+        </li>
+        <!-- <li class="nav-item">
+            <a class="nav-link">{{userData.FirstName}}</a>
+        </li> -->
+        <li class="nav-item">
+            <!-- <a class="nav-link"> <i class="fas fa-user-circle" style="font-size: 16px;"></i> </a> -->
+            <div class="dropdown">
+                <a class="dropdown-toggle" href="" style="text-decoration: none;" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user-circle" style="font-size: 16px;"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" style="background-color: #343a40" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="" data-toggle="modal" data-target="#changeUserInfo">Change Information</a>
+                  <a class="dropdown-item" href="" data-toggle="modal" data-target="#changePassword">Change Password</a>
+                </div>
+              </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="" (click)="Logout()" routerLink="/home"><i class="fas fa-sign-out-alt" style="font-size: 16px;"></i></a>
+        </li>
+    </ul>
+  </div>
+</nav>
+<div class="row">
+  <h2 class="title">{{path}}</h2>
+</div>
+<app-change-user></app-change-user>

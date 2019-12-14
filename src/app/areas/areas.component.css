@@ -1,0 +1,16 @@
+.row {
+    margin-right: 35px;
+    margin-left: 35px;
+    margin-top: 30px;
+}
+.table td, .table th{
+    height: 30px;
+    padding-left: 0.75rem;
+    padding-top: 0.1em;
+    padding-right: 0.75rem;
+    padding-bottom: 0.30rem;
+}
+.btn{
+    padding-top: 0.11rem;
+    padding-bottom: 0.11rem;
+}

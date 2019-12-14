@@ -1,0 +1,147 @@
+<div class="modal fade" id="addHotel" [ngStyle]="{'display':display}" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Hotel</h5>
+        <button type="button" class="close" data-dismiss="modal" (click)="onClose()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row col-md-12">
+          <form #addHotel=ngForm (ngSubmit)="onSubmit(addHotel)" [formGroup]="hotelForm">
+            <div class="row">
+              <div class="row col-12">
+                <div class="form-group item col-md-4">
+                  <label>Hotel Name</label><span class="requerd">*</span>
+                  <input type="text" class="form-control" formControlName='hotelName' #hotelName>
+                  <div
+                    *ngIf="hotelForm.controls['hotelName'].invalid && (hotelForm.controls['hotelName'].dirty || hotelForm.controls['hotelName'].touched)">
+                    <div *ngIf="hotelForm.controls['hotelName'].errors.required">
+                      <p class="error-msg">Hotel Name is required.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group item col-md-3">
+                  <label>City</label><span class="requerd">*</span>
+                  <select class="form-control" formControlName="city" #city>
+                    <option *ngFor="let type of City" [ngValue]="type.value">
+                      {{type.name}}
+                    </option>
+                  </select>
+                  <div
+                    *ngIf="hotelForm.controls['city'].invalid && (hotelForm.controls['city'].dirty || hotelForm.controls['city'].touched)">
+                    <div *ngIf="hotelForm.controls['city'].errors.required">
+                      <p class="error-msg">City is required.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group item col-md-3">
+                  <label>Type Of Tourism</label><span class="requerd">*</span>
+                  <select class="form-control" formControlName="typeofTourism" #typeofTourism>
+                    <option *ngFor="let type of TypeofTourism" [ngValue]="type.value">
+                      {{type.name}}
+                    </option>
+                  </select>
+                  <div
+                    *ngIf="hotelForm.controls['typeofTourism'].invalid && (hotelForm.controls['typeofTourism'].dirty || hotelForm.controls['typeofTourism'].touched)">
+                    <div *ngIf="hotelForm.controls['typeofTourism'].errors.required">
+                      <p class="error-msg">Type of tourism is required.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row col-12">
+                <div class="form-group item col-md-4">
+                  <label>Main Image</label><span class="requerd">*</span>
+                  <input type="file" (change)="onFileSelect($event.target.files)" formControlName='image' #image>
+                  <div
+                    *ngIf="hotelForm.controls['image'].invalid && (hotelForm.controls['image'].dirty || hotelForm.controls['image'].touched)">
+                    <div *ngIf="hotelForm.controls['image'].errors.required">
+                      <p class="error-msg">Image is required.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group item col-md-2">
+                  <label>Stars</label><span class="requerd">*</span>
+                  <select class="form-control" formControlName="hotelStar" #hotelStar>
+                    <option *ngFor="let item of HotelStar" [ngValue]="item.value">
+                      {{item.name}}
+                    </option>
+                  </select>
+                  <div
+                    *ngIf="hotelForm.controls['hotelStar'].invalid && (hotelForm.controls['hotelStar'].dirty || hotelForm.controls['hotelStar'].touched)">
+                    <div *ngIf="hotelForm.controls['hotelStar'].errors.required">
+                      <p class="error-msg">Hotel stars is required.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group item col-md-3">
+                  <label>Address</label>
+                  <input type="text" class="form-control" formControlName='address' #address>
+                </div>
+              </div>
+              <div class="row col-12">
+                <div class="form-group item col-md-3">
+                  <label>Price</label><span class="requerd">*</span>
+                  <input type="text" class="form-control" formControlName='priceForDay' #priceForDay>
+                  <div
+                    *ngIf="hotelForm.controls['priceForDay'].invalid && (hotelForm.controls['priceForDay'].dirty || hotelForm.controls['priceForDay'].touched)">
+                    <div *ngIf="hotelForm.controls['priceForDay'].errors.required">
+                      <p class="error-msg">Price is required.</p>
+                    </div>
+                    <div *ngIf="hotelForm.controls['priceForDay'].errors.pattern">
+                      <p class="error-msg">Price only Number and max 3 digit</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group item col-md-3">
+                  <label>Persons</label><span class="requerd">*</span>
+                  <input type="number" class="form-control" formControlName='numOfPerson' #numOfPerson>
+                  <div
+                    *ngIf="hotelForm.controls['numOfPerson'].invalid && (hotelForm.controls['numOfPerson'].dirty || hotelForm.controls['numOfPerson'].touched)">
+                    <div *ngIf="hotelForm.controls['numOfPerson'].errors.required">
+                      <p class="error-msg">Person is required.</p>
+                    </div>
+                    <div *ngIf="hotelForm.controls['numOfPerson'].errors.pattern">
+                      <p class="error-msg">Person min 1 , max 4 </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group item col-md-3">
+                  <label>Is Offer</label>
+                  <input style="margin-left:-52px;" type="checkbox" class="form-control check" formControlName='isOffer'
+                    [(ngModel)]="offer" #isOffer>
+                </div>
+              </div>
+              <div class="row col-12" *ngIf="offer">
+                <div class="form-group item col-md-4">
+                  <label>Start Data Offer</label>
+                  <input type="date" class="form-control" formControlName='startDataOffer' #startDataOffer>
+                </div>
+                <div class="form-group item col-md-4">
+                  <label>End Date Offer</label>
+                  <input type="date" class="form-control" formControlName='endDateOffer' #endDateOffer>
+                </div>
+              </div>
+              <div class="row col-12">
+                <div class="form-group item col-md-12">
+                  <label>The Details</label>
+                  <textarea class="form-control" rows="5" formControlName='map' #map></textarea>
+                </div>
+              </div>
+              <div class="row col-md-12">
+                <p class="error-msg" *ngIf="!dateValidation">End date before start date</p>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="onClose()" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

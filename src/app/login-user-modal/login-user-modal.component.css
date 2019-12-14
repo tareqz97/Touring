@@ -1,0 +1,9 @@
+.error-msg{
+    color: red;
+    font-size :13px;
+}
+.requerd{
+    color: red;
+    font-size: 17px;
+    font-weight: bold;
+}

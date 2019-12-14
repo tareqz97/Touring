@@ -1,0 +1,130 @@
+.title{
+    font-weight: bold;
+    font-size: 22px;
+    text-transform: capitalize;
+}
+.checked {
+    color: orange;
+  }
+  .form-control {
+      width: 160px;
+    display: block;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    -webkit-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.offer{
+  background-color: #FF0040;
+    border-radius: 9px;
+    font-size: 20px;
+    font-weight: normal;
+    font-family: cursive;
+    margin-top: 15px;
+    margin-right: 5px;
+    padding-right: 7px;
+    padding-left: 7px;
+}
+a.details{
+  color: blue;
+}
+a.details:hover{
+  text-decoration: underline;
+  cursor: pointer;
+  color: blue;
+}
+/* /////////////////////////////////////// */
+.align-items-center {
+    -ms-flex-align: center!important;
+    align-items: center!important;
+  }
+  .d-flex {
+    display: -ms-flexbox!important;
+    display: flex!important;
+  }
+
+
+  /* ////////////////////////////////// */
+
+
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) { 
+  img{
+    height: 190px;
+    width: 440px;
+  }
+  .card-info{
+    margin-left: 15px;
+  }
+ }
+
+ /* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) { 
+  img{
+    height: 200px;
+    width: 670px;
+  }
+  .card-info{
+    margin-left: 15px;
+  }
+ }
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  img{
+    height: 190px;
+    width: 200px;
+  }
+  .card-info{
+    margin-left: -15px;
+  }
+  .card{
+    width: 400px;
+  }
+  .icon{
+    margin-right: -15px;
+  }
+ }
+
+ /* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  img{
+    height: 190px;
+    width: 300px;
+  }
+  .card-info{
+    margin-left: -15px;
+  }
+  .card{
+    width: 400px;
+  }
+  .icon{
+    margin-right: -51px;
+  }
+ }
+
+ /* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  img{
+    height: 230px;
+    width: 370px;
+  }
+  .card-info{
+    margin-left: -15px;
+  }
+  .card{
+    width: 655px;
+  }
+  .icon{
+    margin-right: -67px;
+  }
+  .icon-event{
+    margin-right: -15px;
+  }
+ }

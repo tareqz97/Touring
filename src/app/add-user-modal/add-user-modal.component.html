@@ -1,0 +1,145 @@
+<div>
+  <!-- <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addUser">Add User</button>        -->
+</div>
+<div class="modal fade" id="addUser" [ngStyle]="{'display':display}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Sign in</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- *ngIf="item.title != 'Id'" -->
+        <div class="row col-md-8">
+          <form [formGroup]="userForm">
+            <div class="row">
+              <div class="form-group item col-md-3">
+                <label>First Name</label><span class="requerd">*</span>
+                <input type="text" class="form-control" formControlName='firstName'>
+                <div *ngIf="userForm.controls['firstName'].invalid && (userForm.controls['firstName'].dirty || userForm.controls['firstName'].touched)">
+                  <div *ngIf="userForm.controls['firstName'].errors.required">
+                    <p class="error-msg">First Name is required.</p>
+                  </div>
+                  <div *ngIf="userForm.controls['firstName'].errors.pattern">
+                    <p class="error-msg">First Name only characters</p>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group item col-md-3">
+                <label>Middle Name</label>
+                <input type="text" class="form-control" formControlName='middleName'>
+              </div>
+              <div class="form-group item col-md-3">
+                <label>Last Name</label><span class="requerd">*</span>
+                <input type="text" class="form-control" formControlName='lastName'>
+                <div *ngIf="userForm.controls['lastName'].invalid && (userForm.controls['lastName'].dirty || userForm.controls['lastName'].touched)">
+                    <div *ngIf="userForm.controls['lastName'].errors.required">
+                      <p class="error-msg">Last Name is required.</p>
+                    </div>
+                    <div *ngIf="userForm.controls['lastName'].errors.pattern">
+                      <p class="error-msg">Last Name only characters</p>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group item col-md-3">
+                  <label>Type Of Tourism</label>
+                  <select class="form-control" formControlName="typeofTourism">
+                      <option *ngFor="let type of typeofTourism" [ngValue]="type.value" (change)="changeCity($event)">{{type.name}}
+                      </option>
+                   </select>
+                <div *ngIf="userForm.controls['typeofTourism'].invalid && (userForm.controls['typeofTourism'].dirty || userForm.controls['typeofTourism'].touched)">
+                    <div *ngIf="userForm.controls['typeofTourism'].errors.required">
+                      <p class="error-msg">Type of tourism is required.</p>
+                    </div>
+                  </div>
+              </div>
+              <div class="form-group item col-md-3">
+                <label>City</label><span class="requerd">*</span>
+                <select class="form-control" formControlName="city">
+                    <option *ngFor="let city of City" [ngValue]="city.value">{{city.name}}
+                    </option>
+                 </select>
+                <div *ngIf="userForm.controls['city'].invalid && (userForm.controls['city'].dirty || userForm.controls['city'].touched)">
+                    <div *ngIf="userForm.controls['city'].errors.required">
+                      <p class="error-msg">City is required.</p>
+                    </div>
+                  </div>
+              </div>
+              <div class="form-group item col-md-3">
+                <label>Address</label>
+                <input type="text" class="form-control" formControlName='address'>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group item col-md-3">
+                <label>Gender</label><span class="requerd">*</span>
+                <select class="form-control" formControlName="gender">
+                    <option *ngFor="let gender of Gender" [ngValue]="gender.value">{{gender.name}}
+                    </option>
+                 </select>
+                 <div *ngIf="userForm.controls['gender'].invalid && (userForm.controls['gender'].dirty || userForm.controls['gender'].touched)">
+                    <div *ngIf="userForm.controls['gender'].errors.required">
+                      <p class="error-msg">Gender is required.</p>
+                    </div>
+                  </div>
+              </div>
+              <div class="form-group item col-md-4">
+                <label>Phone Number</label><span class="requerd">*</span>
+                <input type="text" class="form-control" formControlName='phoneNumber'>
+                <div *ngIf="userForm.controls['phoneNumber'].invalid && (userForm.controls['phoneNumber'].dirty || userForm.controls['phoneNumber'].touched)">
+                    <div *ngIf="userForm.controls['phoneNumber'].errors.required">
+                      <p class="error-msg">Phone Number is required.</p>
+                    </div>
+                    <div *ngIf="userForm.controls['phoneNumber'].errors.pattern">
+                      <p class="error-msg">Phone Number not valid</p>
+                    </div>
+                  </div>
+              </div>
+              <div class="form-group item col-md-8">
+                <label>Email</label><span class="requerd">*</span>
+                <input type="text" class="form-control" formControlName='email'>
+                <div *ngIf="userForm.controls['email'].invalid && (userForm.controls['email'].dirty || userForm.controls['email'].touched)">
+                    <div *ngIf="userForm.controls['email'].errors.required">
+                      <p class="error-msg">Email Name is required.</p>
+                    </div>
+                    <div *ngIf="userForm.controls['email'].errors.pattern">
+                      <p class="error-msg">Email not valid</p>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group item col-md-4">
+                <label>Password</label><span class="requerd">*</span>
+                <input type="password" class="form-control" formControlName='password'>
+                <div *ngIf="userForm.controls['password'].invalid && (userForm.controls['password'].dirty || userForm.controls['password'].touched)">
+                    <div *ngIf="userForm.controls['password'].errors.required">
+                      <p class="error-msg">Password is required.</p>
+                    </div>
+                  </div>
+              </div>
+              <div class="form-group item col-md-4">
+                <label>Confirm Password</label><span class="requerd">*</span>
+                <input type="password" class="form-control" formControlName='confirmPassword'>
+                <div *ngIf="userForm.controls['confirmPassword'].invalid && (userForm.controls['confirmPassword'].dirty || userForm.controls['confirmPassword'].touched)">
+                    <div *ngIf="userForm.controls['confirmPassword'].errors.required">
+                      <span class="error-msg">Confirm Password is required.</span>
+                    </div>
+                  </div>
+                  <span class="error-msg" *ngIf="!passwordValidation">Password not match</span>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="onClose()" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" (click)="addUser()">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
